@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 
 
 
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <Header></Header>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   )
 }

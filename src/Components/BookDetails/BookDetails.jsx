@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const BookDetails = () => {
+
     const bookDetails = useLoaderData()
     console.log(bookDetails);
     const { authors, price, image, rating, title, year, publisher, desc } = bookDetails
     const [fold, setFold] = useState(true)
+
+    const navigation = useNavigation();
+    if (navigation.state === 'loading') {
+        return <LoadingSpinner></LoadingSpinner>
+    }
+
     return (
         <div className='grid lg:grid-cols-2 border-2 w-5/6 mx-auto mt-20 rounded items-center mb-20'>
             <div className=''>
@@ -42,7 +50,7 @@ const BookDetails = () => {
 
                 <div className='lg:flex items-center mt-8'>
                     <button className='bg-blue-400 text-xl text-white rounded font-bold px-5 py-3'>Buy Now</button>
-                    <p className='font-bold text-slate-500 ml-6 text-xl'>Price: {price}</p>
+                    <p className='font-bold text-slate-500 lg:ml-6 mt-3 lg:mt-0 text-xl'>Price: {price}</p>
                 </div>
             </div>
         </div>
